@@ -1,0 +1,16 @@
+First two sprints
+Sprint 1: Foundation and fake data
+- Set up repository, branch rules, templates, and docs
+- Create a basic React/TypeScript extension
+- Create a basic Next.js/Vercel project
+- Create Supabase project and tables
+- Use mock assignments and mock token awards
+- Make a simple extension popup that shows token balance
+- Inject one harmless Canvas visual change, such as a small XP panel
+Sprint 2: Real flow
+- Implement Canvas OAuth after school approval
+- Retrieve only approved read-only assignment/submission information
+- Connect the token ledger to real submission timing
+- Create a basic store and inventory
+- Add one usable theme or avatar reward
+- Write privacy/security documentation and test cases

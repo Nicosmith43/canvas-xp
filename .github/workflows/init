@@ -1,0 +1,23 @@
+#GitHub workflow to teach the team
+Everyone should use GitHub Desktop. Each person does this:
+1. Clone the repository.
+2. Pull main.
+3. Create a branch.
+4. Make one focused change.
+5. Commit it.
+6. Push the branch.
+7. Open a pull request.
+8. You review and merge it into main.
+9. Everyone pulls main again before beginning another task.
+Use these branch names:
+feature/token-calculation
+feature/canvas-theme-panel
+fix/late-submission-bug
+docs/update-user-stories
+chore/setup-extension
+Use these commit messages:
+feat(extension): add theme selector
+feat(tokens): calculate early-submission bonus
+fix(auth): handle expired Canvas session
+docs: add sprint one user stories
+chore: configure linting

@@ -1,0 +1,23 @@
+Canvas and security rules
+Your meeting with the school should produce answers to these exact questions:
+- Will UNC provide a Canvas Developer Key?
+- What Canvas domain(s) should the extension support?
+- Which exact OAuth redirect URLs will they approve?
+- Which read-only scopes/endpoints can you use?
+- Can you use a Canvas test/beta environment?
+- Is the extension allowed to read assignment and submission information for the logged-in user?
+- What student-data retention/deletion requirements apply?
+- Is Chrome/Edge extension distribution acceptable, or must it go through the Chrome Web Store?
+Canvas developer keys can restrict OAuth redirect URIs and API scopes, so get those decisions in writing before building the real login flow. Instructure Developer Documentation Portal
+Never put these in the extension or commit them to GitHub:
+CANVAS_CLIENT_SECRET
+SUPABASE_SERVICE_ROLE_KEY
+DATABASE_PASSWORD
+OAuth access tokens
+Only use placeholders in .env.example, such as:
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+CANVAS_CLIENT_ID=
+CANVAS_CLIENT_SECRET=
+CANVAS_BASE_URL=
+The extension should call your backend; the backend should handle the OAuth code exchange and secure Canvas calls. Do not place a Canvas client secret in the extension, because extension code can be inspected by its users.
