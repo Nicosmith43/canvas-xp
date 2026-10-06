@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Canvas Due Date Tracker",
+  "version": "1.0",
+  "description": "Automatically fetches Canvas due dates directly from the page context.",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://unco.instructure.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
