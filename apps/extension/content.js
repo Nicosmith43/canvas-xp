@@ -72,19 +72,45 @@ function injectDueDateWidget(assignments) {
   // Widget Header Block
   const headerContainer = document.createElement("div");
   headerContainer.style.display = "flex";
-  headerContainer.style.justifyContent = "between";
-  headerContainer.style.alignItems = "center";
+  headerContainer.style.flexDirection = "column";
+  headerContainer.style.gap = "4px";
   headerContainer.style.borderBottom = "1px solid rgba(255,255,255,0.15)";
-  headerContainer.style.paddingBottom = "10px";
-  headerContainer.style.marginBottom = "12px";
+  headerContainer.style.paddingBottom = "12px";
+  headerContainer.style.marginBottom = "16px";
+
+  const topRow = document.createElement("div");
+  topRow.style.display = "flex";
+  topRow.style.justifyContent = "space-between";
+  topRow.style.alignItems = "center";
 
   const title = document.createElement("h2");
-  title.innerText = "⚡ Athlete Academic Tracker";
-  title.style.fontSize = "15px";
+  title.innerText = "⚡ Canvas XP";
+  title.style.fontSize = "16px";
   title.style.fontWeight = "bold";
   title.style.margin = "0";
-  title.style.letterSpacing = "0.5px";
-  headerContainer.appendChild(title);
+  title.style.color = "#F6B000";
+  
+  const xpBadge = document.createElement("div");
+  xpBadge.innerText = "1,250 XP";
+  xpBadge.style.fontSize = "12px";
+  xpBadge.style.fontWeight = "bold";
+  xpBadge.style.backgroundColor = "rgba(246, 176, 0, 0.2)";
+  xpBadge.style.color = "#F6B000";
+  xpBadge.style.padding = "4px 8px";
+  xpBadge.style.borderRadius = "6px";
+  xpBadge.style.border = "1px solid rgba(246, 176, 0, 0.3)";
+
+  topRow.appendChild(title);
+  topRow.appendChild(xpBadge);
+  headerContainer.appendChild(topRow);
+
+  const subTitle = document.createElement("p");
+  subTitle.innerText = "Athlete Academic Tracker";
+  subTitle.style.fontSize = "11px";
+  subTitle.style.margin = "0";
+  subTitle.style.color = "rgba(255,255,255,0.6)";
+  headerContainer.appendChild(subTitle);
+  
   widget.appendChild(headerContainer);
 
   // Task List Frame
