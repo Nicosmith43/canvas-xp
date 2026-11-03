@@ -34,6 +34,8 @@ The project is designed to encourage positive academic habits without affecting 
 
 ## Key Features
 
+<img width="1898" height="912" alt="image" src="https://github.com/user-attachments/assets/69310da0-c150-4e27-bc40-0831608d81b7" />
+
 ### 1. Student Dashboard
 
 Canvas XP includes a student dashboard that provides an overview of academic rewards and progress.
