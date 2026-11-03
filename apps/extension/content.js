@@ -90,18 +90,35 @@ function injectDueDateWidget(assignments) {
   title.style.margin = "0";
   title.style.color = "#F6B000";
   
+  const badgeContainer = document.createElement("div");
+  badgeContainer.style.display = "flex";
+  badgeContainer.style.gap = "8px";
+
   const xpBadge = document.createElement("div");
   xpBadge.innerText = "1,250 XP";
-  xpBadge.style.fontSize = "12px";
+  xpBadge.style.fontSize = "11px";
   xpBadge.style.fontWeight = "bold";
   xpBadge.style.backgroundColor = "rgba(246, 176, 0, 0.2)";
   xpBadge.style.color = "#F6B000";
-  xpBadge.style.padding = "4px 8px";
-  xpBadge.style.borderRadius = "6px";
+  xpBadge.style.padding = "3px 6px";
+  xpBadge.style.borderRadius = "4px";
   xpBadge.style.border = "1px solid rgba(246, 176, 0, 0.3)";
 
+  const tokenBadge = document.createElement("div");
+  tokenBadge.innerText = "825 T";
+  tokenBadge.style.fontSize = "11px";
+  tokenBadge.style.fontWeight = "bold";
+  tokenBadge.style.backgroundColor = "rgba(59, 130, 246, 0.2)";
+  tokenBadge.style.color = "#3b82f6";
+  tokenBadge.style.padding = "3px 6px";
+  tokenBadge.style.borderRadius = "4px";
+  tokenBadge.style.border = "1px solid rgba(59, 130, 246, 0.3)";
+
+  badgeContainer.appendChild(xpBadge);
+  badgeContainer.appendChild(tokenBadge);
+
   topRow.appendChild(title);
-  topRow.appendChild(xpBadge);
+  topRow.appendChild(badgeContainer);
   headerContainer.appendChild(topRow);
 
   const subTitle = document.createElement("p");

@@ -77,19 +77,21 @@ The extension currently targets the University of Northern Colorado Canvas domai
 
 ### 3. XP and Rewards System
 
-Canvas XP is designed to reward students for completing assignments early or within an established submission window.
+Canvas XP uses a dual-point system to separate academic competition from virtual rewards:
 
-The planned XP system will:
+*   **XP (Experience Points):** Earned through academic effort. Used for weekly rankings and personal goals. XP cannot be spent.
+*   **Tokens:** Virtual currency earned alongside XP. Tokens are spent in the Item Store on customization and games.
 
-- Award tokens for eligible assignment submissions.
-- Track earned and spent XP.
-- Maintain a history of transactions.
-- Calculate balances from recorded transactions.
-- Allow students to spend tokens on virtual rewards.
+**Reward Rules:**
 
-The database includes a `token_ledger` table designed to record positive and negative XP transactions.
-
-The complete automated XP-awarding functionality is still under development.
+*   **Base XP:** Scaled by assignment point value (50–200 XP).
+*   **Base Tokens:** +50 Tokens per assignment.
+*   **Early Submission Bonus:**
+    *   24+ hours early: +50 XP and +25 Tokens.
+    *   48+ hours early: +75 XP and +25 Tokens.
+    *   72+ hours early: +100 XP and +25 Tokens.
+*   **Streaks:** Bonus XP for 3, 7, and 14-day submission streaks.
+*   **Weekly Goal:** +250 XP for reaching your personal weekly target.
 
 ### 4. Virtual Item Store
 
