@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Trophy, Store, User, LogOut, Gamepad2 } from 'lucide-react';
+import { Trophy, Store, User, LogOut, Gamepad2, Package } from 'lucide-react';
 
 export default function Navbar() {
   return (
@@ -19,6 +19,13 @@ export default function Navbar() {
         >
           <Gamepad2 className="w-5 h-5" />
           <span className="font-medium">Arcade</span>
+        </Link>
+        <Link
+          to="/inventory"
+          className="flex items-center gap-2 text-gray-300 hover:text-unc-gold transition-colors"
+        >
+          <Package className="w-5 h-5" />
+          <span className="font-medium">Inventory</span>
         </Link>
         <Link
           to="/store"
