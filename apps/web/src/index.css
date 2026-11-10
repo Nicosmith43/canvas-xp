@@ -1,8 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --color-unc-blue: #002A54;
-  --color-unc-gold: #F6B000;
+  --color-unc-blue: #002a54;
+  --color-unc-gold: #f6b000;
 }
 
 :root {

@@ -1,5 +1,5 @@
-import React from 'react'
-import { User, Settings, Link2 } from 'lucide-react'
+import React from 'react';
+import { User, Settings, Link2 } from 'lucide-react';
 
 export default function Profile() {
   return (
@@ -18,7 +18,7 @@ export default function Profile() {
           </div>
           <h2 className="text-3xl font-bold text-white mb-1">UNC Student</h2>
           <p className="text-gray-400 mb-6">Class of 2027 • Athlete Account</p>
-          
+
           <div className="flex gap-4">
             <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm text-gray-300">
               <span className="font-bold text-white">1,250</span> Total XP
@@ -46,7 +46,7 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        
+
         <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
           <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
             <Settings className="w-5 h-5 text-unc-gold" />
@@ -65,5 +65,5 @@ export default function Profile() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,0 +1,46 @@
+[
+  {
+    "id": 5001,
+    "assignment_id": 1001,
+    "user_id": 123,
+    "submitted_at": "2026-11-12T10:00:00Z",
+    "workflow_state": "submitted",
+    "late": false,
+    "excused": false,
+    "grade": "45",
+    "score": 45
+  },
+  {
+    "id": 5002,
+    "assignment_id": 1002,
+    "user_id": 123,
+    "submitted_at": "2026-11-20T23:50:00Z",
+    "workflow_state": "submitted",
+    "late": false,
+    "excused": false,
+    "grade": null,
+    "score": null
+  },
+  {
+    "id": 5003,
+    "assignment_id": 1003,
+    "user_id": 123,
+    "submitted_at": "2026-11-06T12:00:00Z",
+    "workflow_state": "submitted",
+    "late": true,
+    "excused": false,
+    "grade": "60",
+    "score": 60
+  },
+  {
+    "id": 5004,
+    "assignment_id": 1004,
+    "user_id": 123,
+    "submitted_at": null,
+    "workflow_state": "unsubmitted",
+    "late": false,
+    "excused": true,
+    "grade": null,
+    "score": null
+  }
+]

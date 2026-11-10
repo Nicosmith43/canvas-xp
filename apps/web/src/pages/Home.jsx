@@ -1,5 +1,5 @@
-import React from 'react'
-import { Trophy, Star, Zap, Coins, Flame, Target } from 'lucide-react'
+import React from 'react';
+import { Star, Zap, Coins, Flame, Target } from 'lucide-react';
 
 export default function Home() {
   const weeklyXP = 1250;
@@ -10,7 +10,9 @@ export default function Home() {
     <div className="max-w-6xl mx-auto py-12 px-6">
       <header className="mb-12">
         <h1 className="text-4xl font-extrabold text-white mb-4">Welcome back, Athlete! 🐻</h1>
-        <p className="text-xl text-gray-400">Keep track of your academic performance and earn rewards.</p>
+        <p className="text-xl text-gray-400">
+          Keep track of your academic performance and earn rewards.
+        </p>
       </header>
 
       {/* Weekly Goal Progress */}
@@ -21,7 +23,9 @@ export default function Home() {
               <Target className="text-unc-gold w-6 h-6" />
               Weekly Goal
             </h2>
-            <p className="text-gray-400 text-sm">Earn {weeklyGoal} XP this week to unlock a bonus!</p>
+            <p className="text-gray-400 text-sm">
+              Earn {weeklyGoal} XP this week to unlock a bonus!
+            </p>
           </div>
           <div className="text-right">
             <span className="text-2xl font-bold text-white">{weeklyXP}</span>
@@ -29,7 +33,7 @@ export default function Home() {
           </div>
         </div>
         <div className="h-4 bg-white/10 rounded-full overflow-hidden">
-          <div 
+          <div
             className="h-full bg-gradient-to-r from-unc-gold to-yellow-500 transition-all duration-1000"
             style={{ width: `${progress}%` }}
           />
@@ -79,14 +83,35 @@ export default function Home() {
         <h2 className="text-2xl font-bold text-white mb-6">Recent Activity</h2>
         <div className="space-y-4">
           {[
-            { type: 'award', label: 'Assignment: Database Project', xp: 175, tokens: 75, date: '2 hours ago' },
+            {
+              type: 'award',
+              label: 'Assignment: Database Project',
+              xp: 175,
+              tokens: 75,
+              date: '2 hours ago',
+            },
             { type: 'award', label: 'Weekly Goal Reached', xp: 250, tokens: 0, date: 'Yesterday' },
-            { type: 'purchase', label: 'Bought: Golden Avatar Frame', xp: 0, tokens: -500, date: 'Oct 31' },
+            {
+              type: 'purchase',
+              label: 'Bought: Golden Avatar Frame',
+              xp: 0,
+              tokens: -500,
+              date: 'Oct 31',
+            },
           ].map((activity, i) => (
-            <div key={i} className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-colors">
+            <div
+              key={i}
+              className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-colors"
+            >
               <div className="flex items-center gap-4">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center ${activity.type === 'award' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
-                  {activity.type === 'award' ? <Zap className="w-5 h-5" /> : <Coins className="w-5 h-5" />}
+                <div
+                  className={`w-10 h-10 rounded-full flex items-center justify-center ${activity.type === 'award' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}
+                >
+                  {activity.type === 'award' ? (
+                    <Zap className="w-5 h-5" />
+                  ) : (
+                    <Coins className="w-5 h-5" />
+                  )}
                 </div>
                 <div>
                   <p className="text-white font-medium">{activity.label}</p>
@@ -94,10 +119,15 @@ export default function Home() {
                 </div>
               </div>
               <div className="text-right">
-                {activity.xp !== 0 && <p className="text-unc-gold font-bold text-sm">+{activity.xp} XP</p>}
+                {activity.xp !== 0 && (
+                  <p className="text-unc-gold font-bold text-sm">+{activity.xp} XP</p>
+                )}
                 {activity.tokens !== 0 && (
-                  <p className={`font-bold text-sm ${activity.tokens > 0 ? 'text-blue-400' : 'text-red-400'}`}>
-                    {activity.tokens > 0 ? '+' : ''}{activity.tokens} Tokens
+                  <p
+                    className={`font-bold text-sm ${activity.tokens > 0 ? 'text-blue-400' : 'text-red-400'}`}
+                  >
+                    {activity.tokens > 0 ? '+' : ''}
+                    {activity.tokens} Tokens
                   </p>
                 )}
               </div>
@@ -106,5 +136,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }
