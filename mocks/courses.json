@@ -1,0 +1,20 @@
+[
+  {
+    "id": 101,
+    "name": "CS 101: Intro to Computer Science",
+    "course_code": "CS101",
+    "workflow_state": "available"
+  },
+  {
+    "id": 102,
+    "name": "HIST 201: American History",
+    "course_code": "HIST201",
+    "workflow_state": "available"
+  },
+  {
+    "id": 103,
+    "name": "MATH 301: Calculus III",
+    "course_code": "MATH301",
+    "workflow_state": "available"
+  }
+]

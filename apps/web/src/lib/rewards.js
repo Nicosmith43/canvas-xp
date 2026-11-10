@@ -21,7 +21,7 @@ export const rewardRules = {
 
 /**
  * Calculates the XP and Token rewards for a Canvas assignment submission.
- * 
+ *
  * @param {Object} assignment - The Canvas assignment object
  * @param {Object} submission - The Canvas submission object
  * @returns {Object} Result containing awarding status and calculated amounts
@@ -29,19 +29,19 @@ export const rewardRules = {
 export function calculateSubmissionReward(assignment, submission) {
   // 1. Validation: Ensure we have the necessary dates
   if (!assignment.due_at || !submission.submitted_at) {
-    return { eligible: false, reason: "Missing dates" };
+    return { eligible: false, reason: 'Missing dates' };
   }
 
   // 2. Validation: Skip excused assignments
   if (submission.excused === true) {
-    return { eligible: false, reason: "Excused assignment" };
+    return { eligible: false, reason: 'Excused assignment' };
   }
 
   const dueTime = new Date(assignment.due_at).getTime();
   const submittedTime = new Date(submission.submitted_at).getTime();
 
   if (!Number.isFinite(dueTime) || !Number.isFinite(submittedTime)) {
-    return { eligible: false, reason: "Invalid dates" };
+    return { eligible: false, reason: 'Invalid dates' };
   }
 
   // 3. Calculate hours early

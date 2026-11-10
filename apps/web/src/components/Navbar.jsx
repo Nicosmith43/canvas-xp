@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Trophy, Store, User, LogOut } from 'lucide-react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Trophy, Store, User, LogOut, Gamepad2 } from 'lucide-react';
 
 export default function Navbar() {
   return (
@@ -13,11 +13,24 @@ export default function Navbar() {
       </Link>
 
       <div className="flex items-center gap-6">
-        <Link to="/store" className="flex items-center gap-2 text-gray-300 hover:text-unc-gold transition-colors">
+        <Link
+          to="/games"
+          className="flex items-center gap-2 text-gray-300 hover:text-unc-gold transition-colors"
+        >
+          <Gamepad2 className="w-5 h-5" />
+          <span className="font-medium">Arcade</span>
+        </Link>
+        <Link
+          to="/store"
+          className="flex items-center gap-2 text-gray-300 hover:text-unc-gold transition-colors"
+        >
           <Store className="w-5 h-5" />
           <span className="font-medium">Store</span>
         </Link>
-        <Link to="/profile" className="flex items-center gap-2 text-gray-300 hover:text-unc-gold transition-colors">
+        <Link
+          to="/profile"
+          className="flex items-center gap-2 text-gray-300 hover:text-unc-gold transition-colors"
+        >
           <User className="w-5 h-5" />
           <span className="font-medium">Profile</span>
         </Link>
@@ -27,5 +40,5 @@ export default function Navbar() {
         </button>
       </div>
     </nav>
-  )
+  );
 }

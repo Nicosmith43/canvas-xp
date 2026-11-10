@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1001,
+    "course_id": 101,
+    "name": "Homework 1: Binary Systems",
+    "due_at": "2026-11-15T23:59:59Z",
+    "points_possible": 50,
+    "workflow_state": "published"
+  },
+  {
+    "id": 1002,
+    "course_id": 101,
+    "name": "Midterm Project: Web Scraper",
+    "due_at": "2026-11-20T23:59:59Z",
+    "points_possible": 100,
+    "workflow_state": "published"
+  },
+  {
+    "id": 1003,
+    "course_id": 102,
+    "name": "Essay: The Industrial Revolution",
+    "due_at": "2026-11-05T23:59:59Z",
+    "points_possible": 75,
+    "workflow_state": "published"
+  },
+  {
+    "id": 1004,
+    "course_id": 103,
+    "name": "Quiz 5: Vector Calculus",
+    "due_at": "2026-11-10T23:59:59Z",
+    "points_possible": 25,
+    "workflow_state": "published"
+  }
+]

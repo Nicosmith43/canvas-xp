@@ -1,9 +1,10 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import Store from './pages/Store'
-import Profile from './pages/Profile'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Store from './pages/Store';
+import Profile from './pages/Profile';
+import Games from './pages/Games';
 
 function App() {
   return (
@@ -15,11 +16,12 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/store" element={<Store />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/games" element={<Games />} />
           </Routes>
         </main>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
