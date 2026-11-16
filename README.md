@@ -34,7 +34,9 @@ The project is designed to encourage positive academic habits without affecting 
 
 ## Key Features
 
-<img width="1898" height="912" alt="image" src="https://github.com/user-attachments/assets/69310da0-c150-4e27-bc40-0831608d81b7" />
+<img width="1897" height="912" alt="image" src="https://github.com/user-attachments/assets/d0b2f227-23cb-47f8-9e87-a9cb9cffee62" />
+<img width="1896" height="907" alt="image" src="https://github.com/user-attachments/assets/a0ec66a9-bda6-4682-8b16-870cdfd17017" />
+
 
 ### 1. Student Dashboard
 
