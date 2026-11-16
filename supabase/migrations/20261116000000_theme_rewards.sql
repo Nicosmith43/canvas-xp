@@ -211,13 +211,26 @@ SECURITY DEFINER
 SET search_path = public
 AS $$
 BEGIN
-  INSERT INTO public.profiles (id, full_name, avatar_url)
-  VALUES (
-    NEW.id,
-    COALESCE(NEW.raw_user_meta_data->>'full_name', NEW.raw_user_meta_data->>'name'),
-    NEW.raw_user_meta_data->>'avatar_url'
-  )
-  ON CONFLICT (id) DO NOTHING;
+  BEGIN
+    INSERT INTO public.profiles (id, username, full_name, avatar_url)
+    VALUES (
+      NEW.id,
+      NULLIF(NEW.raw_user_meta_data->>'username', ''),
+      COALESCE(NEW.raw_user_meta_data->>'full_name', NEW.raw_user_meta_data->>'name'),
+      NEW.raw_user_meta_data->>'avatar_url'
+    )
+    ON CONFLICT (id) DO NOTHING;
+  EXCEPTION WHEN unique_violation THEN
+    -- Username already taken: create the profile without it rather than
+    -- failing the whole signup.
+    INSERT INTO public.profiles (id, full_name, avatar_url)
+    VALUES (
+      NEW.id,
+      COALESCE(NEW.raw_user_meta_data->>'full_name', NEW.raw_user_meta_data->>'name'),
+      NEW.raw_user_meta_data->>'avatar_url'
+    )
+    ON CONFLICT (id) DO NOTHING;
+  END;
   RETURN NEW;
 END;
 $$;
@@ -275,7 +288,7 @@ END;
 $$;
 
 -- 7b. Open a loot box: deduct cost, grant a random unowned theme from the tier.
-CREATE OR REPLACE FUNCTION public.open_loot_box(box_tier TEXT)
+CREATE OR REPLACE FUNCTION public.open_loot_box(target_tier TEXT)
 RETURNS JSONB
 LANGUAGE plpgsql
 SECURITY DEFINER
@@ -292,9 +305,9 @@ BEGIN
     RAISE EXCEPTION 'Not authenticated';
   END IF;
 
-  SELECT * INTO v_box FROM public.loot_boxes WHERE tier = box_tier;
+  SELECT * INTO v_box FROM public.loot_boxes WHERE tier = target_tier;
   IF NOT FOUND THEN
-    RAISE EXCEPTION 'Unknown box tier: %', box_tier;
+    RAISE EXCEPTION 'Unknown box tier: %', target_tier;
   END IF;
 
   SELECT token_balance INTO v_bal
@@ -307,7 +320,7 @@ BEGIN
   -- Pick a random theme from this tier the user does not already own.
   SELECT t.* INTO v_theme
   FROM public.themes t
-  WHERE t.box_tier = box_tier
+  WHERE t.box_tier = target_tier
     AND NOT EXISTS (
       SELECT 1
       FROM public.user_inventory ui
@@ -322,7 +335,7 @@ BEGIN
   END IF;
 
   INSERT INTO public.token_ledger (user_id, token_amount, xp_amount, reason)
-  VALUES (v_user, -v_box.cost, 0, 'loot_box:' || box_tier);
+  VALUES (v_user, -v_box.cost, 0, 'loot_box:' || target_tier);
 
   SELECT id INTO v_item_id FROM public.store_items WHERE theme_id = v_theme.id;
 
@@ -355,11 +368,14 @@ BEGIN
     RAISE EXCEPTION 'Not authenticated';
   END IF;
 
+  -- Only theme items can be equipped; other cosmetics are passive unlocks.
   IF NOT EXISTS (
-    SELECT 1 FROM public.user_inventory
-    WHERE user_id = v_user AND item_id = target_item_id
+    SELECT 1
+    FROM public.user_inventory ui
+    JOIN public.store_items si ON si.id = ui.item_id
+    WHERE ui.user_id = v_user AND ui.item_id = target_item_id AND si.theme_id IS NOT NULL
   ) THEN
-    RAISE EXCEPTION 'Item not in inventory';
+    RAISE EXCEPTION 'Item not in inventory or not equippable';
   END IF;
 
   UPDATE public.user_inventory SET is_selected = false WHERE user_id = v_user;

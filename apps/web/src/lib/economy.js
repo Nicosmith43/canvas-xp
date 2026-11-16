@@ -14,7 +14,7 @@ export async function purchaseItem(itemId) {
 }
 
 export async function openLootBox(tier) {
-  const { data, error } = await supabase.rpc('open_loot_box', { box_tier: tier });
+  const { data, error } = await supabase.rpc('open_loot_box', { target_tier: tier });
   if (error) throw error;
   return data;
 }

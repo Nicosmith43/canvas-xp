@@ -31,7 +31,7 @@ export function calculateSubmissionReward(assignment, submission) {
   if (submission.excused === true) {
     return { eligible: false, reason: 'Excused assignment' };
   }
-  
+
   if (!assignment.due_at || !submission.submitted_at) {
     return { eligible: false, reason: 'Missing dates' };
   }

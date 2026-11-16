@@ -90,7 +90,11 @@ export default function Games() {
             >
               {result.kind === 'bear' &&
                 (result.image_url ? (
-                  <img src={result.image_url} alt={result.name} className="w-3/4 h-3/4 object-contain" />
+                  <img
+                    src={result.image_url}
+                    alt={result.name}
+                    className="w-3/4 h-3/4 object-contain"
+                  />
                 ) : (
                   <PawPrint className="w-24 h-24 text-white/80" />
                 ))}
@@ -137,7 +141,9 @@ export default function Games() {
                   {box.tier === 'Legendary' ? (
                     <PawPrint className="w-16 h-16 text-yellow-400" />
                   ) : (
-                    <Package className={`w-16 h-16 ${rarityIconColor[box.tier] || 'text-gray-400'}`} />
+                    <Package
+                      className={`w-16 h-16 ${rarityIconColor[box.tier] || 'text-gray-400'}`}
+                    />
                   )}
                 </div>
                 <h3 className="text-xl font-bold text-white text-center mb-1">{box.name}</h3>
@@ -176,12 +182,12 @@ export default function Games() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-400">
           <div>
             <p className="mb-4">
-              Every box contains one random theme from its rarity pool. Odds are equally
-              distributed within the pool, and you can never pull a duplicate — boxes only offer
-              themes you don't already own.
+              Every box contains one random theme from its rarity pool. Odds are equally distributed
+              within the pool, and you can never pull a duplicate — boxes only offer themes you
+              don&rsquo;t already own.
             </p>
             <ul className="list-disc list-inside space-y-2">
-              <li>Common / Uncommon / Rare / Epic: 100% chance of that rarity's theme</li>
+              <li>Common / Uncommon / Rare / Epic: 100% chance of that rarity&rsquo;s theme</li>
               <li>Legendary: 100% chance of a UNC Bear collectible (replaces your logo)</li>
             </ul>
           </div>

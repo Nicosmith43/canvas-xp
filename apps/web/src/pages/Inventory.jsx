@@ -40,12 +40,7 @@ function ThemeSwatch({ theme }) {
       />
     );
   }
-  return (
-    <div
-      className="aspect-square"
-      style={{ background: colors.primary || '#334155' }}
-    />
-  );
+  return <div className="aspect-square" style={{ background: colors.primary || '#334155' }} />;
 }
 
 export default function Inventory() {
@@ -70,7 +65,6 @@ export default function Inventory() {
 
   useEffect(() => {
     if (user) load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const handleEquip = async (item) => {
@@ -129,7 +123,9 @@ export default function Inventory() {
           if (items.length === 0) return null;
           return (
             <section key={rarity} className="mb-12">
-              <h2 className={`text-sm font-bold uppercase tracking-widest mb-4 ${rarityText[rarity]}`}>
+              <h2
+                className={`text-sm font-bold uppercase tracking-widest mb-4 ${rarityText[rarity]}`}
+              >
                 {rarity} ({items.filter((t) => t.owned).length}/{items.length})
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -159,7 +155,9 @@ export default function Inventory() {
                     </div>
                     <div className="p-6">
                       <h3 className="font-bold text-white text-lg mb-1">{item.name}</h3>
-                      <p className={`text-[10px] font-bold uppercase tracking-widest mb-4 ${rarityText[item.rarity]}`}>
+                      <p
+                        className={`text-[10px] font-bold uppercase tracking-widest mb-4 ${rarityText[item.rarity]}`}
+                      >
                         {item.rarity}
                         {item.kind === 'bear' ? ' • Bear' : ''}
                       </p>

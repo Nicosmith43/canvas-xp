@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
@@ -54,18 +55,15 @@ export function AuthProvider({ children }) {
     return () => subscription.unsubscribe();
   }, [refreshProfile]);
 
-  const signUp = useCallback(
-    async (email, password, metadata = {}) => {
-      if (!supabase) return { error: new Error('Supabase is not configured') };
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: { data: metadata },
-      });
-      return { data, error };
-    },
-    []
-  );
+  const signUp = useCallback(async (email, password, metadata = {}) => {
+    if (!supabase) return { error: new Error('Supabase is not configured') };
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: metadata },
+    });
+    return { data, error };
+  }, []);
 
   const signIn = useCallback(async (email, password) => {
     if (!supabase) return { error: new Error('Supabase is not configured') };

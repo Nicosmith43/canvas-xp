@@ -78,9 +78,7 @@ export default function Store() {
                 className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all hover:-translate-y-1"
               >
                 <div className="aspect-video bg-gradient-to-br from-unc-blue to-slate-800 flex items-center justify-center relative">
-                  <span className="text-4xl font-black text-white/20 uppercase">
-                    {item.type}
-                  </span>
+                  <span className="text-4xl font-black text-white/20 uppercase">{item.type}</span>
                   {owned && (
                     <div className="absolute top-4 right-4 bg-green-500 text-white p-1.5 rounded-full">
                       <Check className="w-4 h-4" />

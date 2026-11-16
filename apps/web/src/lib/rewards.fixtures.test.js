@@ -8,10 +8,12 @@ import { calculateSubmissionReward } from './rewards.js';
 const here = dirname(fileURLToPath(import.meta.url));
 const fixtureDir = join(here, '..', 'mocks', 'canvas');
 
-const assignments = JSON.parse(readFileSync(join(fixtureDir, 'assignments.json'), 'utf8'))
-  .assignments;
-const submissions = JSON.parse(readFileSync(join(fixtureDir, 'submissions.json'), 'utf8'))
-  .submissions;
+const assignments = JSON.parse(
+  readFileSync(join(fixtureDir, 'assignments.json'), 'utf8')
+).assignments;
+const submissions = JSON.parse(
+  readFileSync(join(fixtureDir, 'submissions.json'), 'utf8')
+).submissions;
 
 const byAssignment = Object.fromEntries(assignments.map((a) => [a.id, a]));
 const bySubmissionAssignment = Object.fromEntries(submissions.map((s) => [s.assignment_id, s]));

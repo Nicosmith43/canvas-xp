@@ -97,7 +97,6 @@ export default function Profile() {
 
   useEffect(() => {
     loadSeasons();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const displayName = profile?.full_name || profile?.username || user?.email || 'Student';
@@ -133,7 +132,8 @@ export default function Profile() {
               <span className="font-bold text-white">{streak}</span> Day Streak
             </div>
             <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm text-gray-300">
-              Weekly goal: <span className="font-bold text-white">{weeklyGoal.toLocaleString()}</span> XP
+              Weekly goal:{' '}
+              <span className="font-bold text-white">{weeklyGoal.toLocaleString()}</span> XP
             </div>
           </div>
         </div>
