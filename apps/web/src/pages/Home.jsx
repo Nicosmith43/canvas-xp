@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Star, Zap, Coins, Flame, Target } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { getWeeklyXp } from '../lib/economy';
+import { getWeeklySummary, claimWeeklyBonus } from '../lib/economy';
 import { useAuth } from '../context/AuthContext';
 
 function timeAgo(dateStr) {
@@ -16,8 +16,11 @@ function timeAgo(dateStr) {
 }
 
 export default function Home() {
-  const { user, profile } = useAuth();
+  const { user, profile, refreshProfile } = useAuth();
   const [weeklyXP, setWeeklyXP] = useState(0);
+  const [bonusClaimed, setBonusClaimed] = useState(false);
+  const [bonusBusy, setBonusBusy] = useState(false);
+  const [bonusError, setBonusError] = useState('');
   const [activity, setActivity] = useState([]);
 
   const weeklyGoal = profile?.weekly_xp_goal ?? 2000;
@@ -28,7 +31,10 @@ export default function Home() {
 
   useEffect(() => {
     if (!user || !supabase) return;
-    getWeeklyXp(user.id).then(setWeeklyXP);
+    getWeeklySummary(user.id).then((summary) => {
+      setWeeklyXP(summary.xp);
+      setBonusClaimed(summary.bonusClaimed);
+    });
     supabase
       .from('token_ledger')
       .select('reason, token_amount, xp_amount, created_at')
@@ -39,6 +45,21 @@ export default function Home() {
   }, [user, profile?.lifetime_xp]);
 
   const displayName = profile?.full_name || profile?.username || 'Athlete';
+
+  const handleClaimBonus = async () => {
+    setBonusBusy(true);
+    setBonusError('');
+    try {
+      await claimWeeklyBonus();
+      setBonusClaimed(true);
+      setWeeklyXP((prev) => prev + 250);
+      await refreshProfile();
+    } catch (err) {
+      setBonusError(err.message || 'Could not claim bonus');
+    } finally {
+      setBonusBusy(false);
+    }
+  };
 
   return (
     <div className="max-w-6xl mx-auto py-12 px-6">
@@ -73,6 +94,25 @@ export default function Home() {
           />
         </div>
         <p className="mt-3 text-sm text-unc-gold font-medium">{Math.floor(progress)}% Complete</p>
+
+        <div className="mt-4 flex items-center gap-4">
+          {bonusClaimed ? (
+            <span className="text-sm font-bold text-green-400">Weekly bonus claimed (+250 XP)</span>
+          ) : weeklyXP >= weeklyGoal ? (
+            <button
+              onClick={handleClaimBonus}
+              disabled={bonusBusy}
+              className="bg-unc-gold text-unc-navy text-sm font-bold px-4 py-2 rounded-xl hover:brightness-110 active:scale-95 transition-all disabled:opacity-50"
+            >
+              {bonusBusy ? 'Claiming...' : 'Claim +250 XP Bonus'}
+            </button>
+          ) : (
+            <span className="text-sm text-gray-500">
+              Reach {weeklyGoal.toLocaleString()} XP to unlock a +250 XP bonus.
+            </span>
+          )}
+          {bonusError && <span className="text-sm text-red-400">{bonusError}</span>}
+        </div>
       </section>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">

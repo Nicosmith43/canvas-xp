@@ -45,23 +45,35 @@ export async function claimSeasonReward(seasonId) {
   return data;
 }
 
-/** XP earned in the current calendar week (for the dashboard goal bar). */
-export async function getWeeklyXp(userId) {
-  const now = new Date();
-  const day = now.getDay() || 7; // Monday = 1 ... Sunday = 7
-  const monday = new Date(now);
-  monday.setDate(now.getDate() - day + 1);
+export async function claimWeeklyBonus() {
+  const { data, error } = await supabase.rpc('claim_weekly_bonus');
+  if (error) throw error;
+  return data;
+}
+
+/**
+ * XP earned since Monday plus whether this week's goal bonus was claimed.
+ */
+export async function getWeeklySummary(userId) {
+  const monday = new Date();
+  const day = monday.getDay() || 7;
+  monday.setDate(monday.getDate() - day + 1);
   monday.setHours(0, 0, 0, 0);
 
   const { data, error } = await supabase
     .from('token_ledger')
-    .select('xp_amount')
+    .select('xp_amount, reason')
     .eq('user_id', userId)
     .gte('created_at', monday.toISOString());
 
   if (error) {
-    console.error('Error loading weekly XP:', error.message);
-    return 0;
+    console.error('Error loading weekly summary:', error.message);
+    return { xp: 0, bonusClaimed: false };
   }
-  return (data || []).reduce((sum, row) => sum + (row.xp_amount || 0), 0);
+
+  const rows = data || [];
+  return {
+    xp: rows.reduce((sum, row) => sum + (row.xp_amount > 0 ? row.xp_amount : 0), 0),
+    bonusClaimed: rows.some((row) => row.reason === 'weekly_goal_bonus'),
+  };
 }
