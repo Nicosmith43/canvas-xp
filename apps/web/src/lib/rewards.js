@@ -28,13 +28,12 @@ export const rewardRules = {
  */
 export function calculateSubmissionReward(assignment, submission) {
   // 1. Validation: Ensure we have the necessary dates
-  if (!assignment.due_at || !submission.submitted_at) {
-    return { eligible: false, reason: 'Missing dates' };
-  }
-
-  // 2. Validation: Skip excused assignments
   if (submission.excused === true) {
     return { eligible: false, reason: 'Excused assignment' };
+  }
+  
+  if (!assignment.due_at || !submission.submitted_at) {
+    return { eligible: false, reason: 'Missing dates' };
   }
 
   const dueTime = new Date(assignment.due_at).getTime();
