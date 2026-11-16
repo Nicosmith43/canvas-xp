@@ -3,6 +3,11 @@ import { supabase } from './supabase';
 /**
  * Records a token transaction in the token_ledger table.
  *
+ * NOTE: token_ledger has no client INSERT policy on purpose — writes must go
+ * through a trusted path (Supabase Edge Function with the service role, or a
+ * SECURITY DEFINER RPC like open_loot_box). Calling this from the browser will
+ * fail RLS; it exists for server-side use and future Canvas award jobs.
+ *
  * @param {string} userId - The Supabase user ID
  * @param {number} tokenAmount - Amount to add (positive) or subtract (negative)
  * @param {number} xpAmount - XP to award (usually 0 for games)

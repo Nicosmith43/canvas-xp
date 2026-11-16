@@ -1,0 +1,84 @@
+{
+  "assignments": [
+    {
+      "id": 1001,
+      "name": "Problem Set 1",
+      "course_id": 101,
+      "points_possible": 20,
+      "due_at": "2026-09-10T23:59:59Z",
+      "unlock_at": "2026-09-01T00:00:00Z",
+      "lock_at": "2026-09-17T23:59:59Z",
+      "submission_types": ["online_upload"],
+      "has_submitted_submissions": true,
+      "all_day": false,
+      "workflow_state": "published"
+    },
+    {
+      "id": 1002,
+      "name": "Lab Report: Osmosis",
+      "course_id": 101,
+      "points_possible": 100,
+      "due_at": "2026-09-15T23:59:59Z",
+      "submission_types": ["online_upload", "online_text_entry"],
+      "has_submitted_submissions": true,
+      "all_day": false,
+      "workflow_state": "published"
+    },
+    {
+      "id": 1003,
+      "name": "Group Project: Ecosystem Model",
+      "course_id": 101,
+      "points_possible": 150,
+      "due_at": "2026-09-20T23:59:59Z",
+      "group_category_id": 7,
+      "submission_types": ["online_upload"],
+      "has_submitted_submissions": true,
+      "all_day": false,
+      "workflow_state": "published"
+    },
+    {
+      "id": 1004,
+      "name": "Reading Quiz 3",
+      "course_id": 102,
+      "points_possible": 10,
+      "due_at": "2026-09-12T12:00:00Z",
+      "submission_types": ["online_quiz"],
+      "has_submitted_submissions": true,
+      "all_day": false,
+      "workflow_state": "published"
+    },
+    {
+      "id": 1005,
+      "name": "Final Paper",
+      "course_id": 101,
+      "points_possible": 200,
+      "due_at": "2026-12-15T23:59:59Z",
+      "submission_types": ["online_upload"],
+      "has_submitted_submissions": false,
+      "all_day": false,
+      "workflow_state": "published"
+    },
+    {
+      "id": 1006,
+      "name": "Peer Review Workshop",
+      "course_id": 102,
+      "points_possible": 15,
+      "due_at": "2026-09-18T23:59:59Z",
+      "submission_types": ["online_text_entry"],
+      "has_submitted_submissions": true,
+      "all_day": true,
+      "workflow_state": "published"
+    },
+    {
+      "id": 1007,
+      "name": "Bonus Quiz (no submission)",
+      "course_id": 102,
+      "points_possible": 5,
+      "due_at": "2026-09-25T23:59:59Z",
+      "submission_types": ["online_quiz"],
+      "has_submitted_submissions": false,
+      "all_day": false,
+      "workflow_state": "published"
+    }
+  ]
+}

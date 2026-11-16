@@ -1,0 +1,83 @@
+{
+  "submissions": [
+    {
+      "id": 5001,
+      "assignment_id": 1001,
+      "user_id": 42,
+      "course_id": 101,
+      "submitted_at": "2026-09-08T23:59:59Z",
+      "late": false,
+      "excused": false,
+      "missing": false,
+      "workflow_state": "graded",
+      "submission_type": "online_upload",
+      "posted_at": "2026-09-09T08:00:00Z"
+    },
+    {
+      "id": 5002,
+      "assignment_id": 1002,
+      "user_id": 42,
+      "course_id": 101,
+      "submitted_at": "2026-09-12T23:59:59Z",
+      "late": false,
+      "excused": false,
+      "missing": false,
+      "workflow_state": "graded",
+      "submission_type": "online_upload",
+      "posted_at": "2026-09-13T09:00:00Z"
+    },
+    {
+      "id": 5003,
+      "assignment_id": 1003,
+      "user_id": 42,
+      "course_id": 101,
+      "group_id": 501,
+      "submitted_at": "2026-09-21T23:59:59Z",
+      "late": true,
+      "excused": false,
+      "missing": false,
+      "workflow_state": "graded",
+      "submission_type": "online_upload",
+      "posted_at": "2026-09-22T10:00:00Z"
+    },
+    {
+      "id": 5004,
+      "assignment_id": 1004,
+      "user_id": 42,
+      "course_id": 102,
+      "submitted_at": "2026-09-12T11:00:00Z",
+      "late": false,
+      "excused": false,
+      "missing": false,
+      "workflow_state": "graded",
+      "submission_type": "online_quiz",
+      "posted_at": "2026-09-12T11:05:00Z"
+    },
+    {
+      "id": 5005,
+      "assignment_id": 1005,
+      "user_id": 42,
+      "course_id": 101,
+      "submitted_at": "2026-12-10T23:59:59Z",
+      "late": false,
+      "excused": false,
+      "missing": false,
+      "workflow_state": "submitted",
+      "submission_type": "online_upload",
+      "posted_at": null
+    },
+    {
+      "id": 5006,
+      "assignment_id": 1006,
+      "user_id": 42,
+      "course_id": 102,
+      "submitted_at": null,
+      "late": false,
+      "excused": true,
+      "missing": false,
+      "workflow_state": "excused",
+      "submission_type": "online_text_entry",
+      "posted_at": null
+    }
+  ]
+}

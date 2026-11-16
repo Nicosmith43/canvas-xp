@@ -1,0 +1,24 @@
+{
+  "courses": [
+    {
+      "id": 101,
+      "name": "Introduction to Biology",
+      "course_code": "BIOL-101",
+      "workflow_state": "available",
+      "start_at": "2026-08-24T00:00:00Z",
+      "end_at": "2026-12-11T00:00:00Z",
+      "enrollment_term_id": 1,
+      "account_id": 1
+    },
+    {
+      "id": 102,
+      "name": "Calculus I",
+      "course_code": "MATH-166",
+      "workflow_state": "available",
+      "start_at": "2026-08-24T00:00:00Z",
+      "end_at": "2026-12-11T00:00:00Z",
+      "enrollment_term_id": 1,
+      "account_id": 1
+    }
+  ]
+}

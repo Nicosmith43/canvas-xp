@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "test": "node --test src/lib/rewards.fixtures.test.js",
     "format": "prettier --write \"**/*.{js,jsx,css,html}\""
   },
   "dependencies": {

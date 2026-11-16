@@ -270,24 +270,38 @@ npm install
 
 This installs the dependencies listed in the application's `package.json` file.
 
-### Step 4: Configure Environment Variables
+### Step 4: Create a Supabase Project
 
-Create a `.env` file inside the `apps/web` directory.
+Canvas XP requires a Supabase project for auth, the database, and economy functions.
 
-Add the following variables:
+1. Go to https://supabase.com and create a free account.
+2. Click **New project**, pick a name (e.g. `canvas-xp`), a database password (save it!), and a region near UNC.
+3. Wait for the project to finish provisioning, then open **Project Settings → API**.
+4. Copy the **Project URL** and the **anon public** key.
+
+### Step 5: Configure Environment Variables
+
+In `apps/web/`, copy `.env.example` to `.env.local` and fill in your values:
 
 ```env
-VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-public-key
 ```
 
-Replace the placeholder values with the appropriate credentials from your Supabase project.
+Do not commit `.env.local` or any secret keys (especially the `service_role` key) to GitHub.
 
-Do not commit sensitive credentials or private environment files to GitHub.
+### Step 6: Run the Database Migrations
 
-The current Supabase client requires these environment variables to initialize successfully.
+In the Supabase dashboard, open **SQL Editor → New query** and run each file in `supabase/migrations/` **in filename order**:
 
-### Step 5: Start the Development Server
+1. `20261019000000_initial_schema.sql` — core tables + RLS
+2. `20261103000000_dual_point_system.sql` — XP/token ledger columns
+3. `20261110000000_balance_functions.sql` — cached balance trigger
+4. `20261116000000_theme_rewards.sql` — themes, loot boxes, seasons, economy functions, seed data
+
+Each file ends with a success message in the SQL Editor when it runs cleanly.
+
+### Step 7: Start the Development Server
 
 Run:
 
@@ -299,7 +313,7 @@ Vite will display a local development URL in the terminal.
 
 Open that URL in your browser to view the application.
 
-### Step 6: Build the Application
+### Step 8: Build the Application
 
 To generate a production build:
 
@@ -428,13 +442,16 @@ Additional backend functionality and security review are required before product
 
 ## Application Routes
 
-The React application currently contains three main routes.
+The React application currently contains these routes (all require sign-in except `/login`):
 
 | Route | Page | Description |
 |---|---|---|
-| `/` | Home | Student dashboard showing XP, rank, items, and activity section |
-| `/store` | Store | Virtual rewards and customization item interface |
-| `/profile` | Profile | Student account information, Canvas connection section, and settings |
+| `/login` | Login | Email/password sign-up and sign-in |
+| `/` | Home | Dashboard with live XP, tokens, streak, weekly goal, and activity feed |
+| `/games` | Arcade | Loot boxes that unlock random themes (server-verified) |
+| `/inventory` | Inventory | Collected themes with equip/unequip |
+| `/store` | Store | Token-priced profile cosmetics |
+| `/profile` | Profile | Account stats, Canvas connection status, season rank rewards |
 
 Navigation between these pages is handled using React Router.
 
